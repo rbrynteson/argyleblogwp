@@ -1,8 +1,8 @@
 import React from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 
 import { makeStyles } from '@mui/styles';
-import { Grid, Paper, Typography, Divider } from '@mui/material';
+import { Grid, Paper, Typography } from '@mui/material';
 import { GitHub, Facebook, Twitter } from "@mui/icons-material";
 
 const useStyles = makeStyles({

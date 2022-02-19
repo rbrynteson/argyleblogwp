@@ -1,6 +1,11 @@
-import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import parse from "html-react-parser"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import { makeStyles } from "@mui/styles";
+import { CssBaseline, Container, Grid } from "@mui/material";
+
+
+import Header from "../components/header.js"
+import Sidebar from "../components/sidebar"
 
 const Layout = ({ isHomePage, children }) => {
   const {
@@ -18,30 +23,34 @@ const Layout = ({ isHomePage, children }) => {
     }
   `)
 
+  const useStyles = makeStyles({
+    mainGrid: {
+      marginTop: 3,
+    },
+  })
+
+  const sections = [
+    { title: "Development", url: "/tags/development/" },
+    { title: "Microsoft Teams", url: "/tags/microsoft-teams/" },
+    { title: "Skype for Business", url: "/tags/skype-for-business/" },
+    { title: "Validator", url: "/tags/validator/" },
+    { title: "Bookmarks", url: "/bookmarks" },
+    { title: "Projects", url: "#" },
+    { title: "About", url: "/about" },
+  ]
+
+  const classes = useStyles()
   return (
-    <div className="global-wrapper" data-is-root-path={isHomePage}>
-      <header className="global-header">
-        {isHomePage ? (
-          <h1 className="main-heading">
-            <Link to="/">{parse(title)}</Link>
-          </h1>
-        ) : (
-          <Link className="header-link-home" to="/">
-            {title}
-          </Link>
-        )}
-      </header>
-
-      <main>{children}</main>
-
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-        {` `}
-        And <a href="https://wordpress.org/">WordPress</a>
-      </footer>
-    </div>
+    <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="lg">
+        <Header title={title} sections={sections} />
+        <Grid container spacing={5} className={classes.mainGrid}>
+          {children}
+          <Sidebar />
+        </Grid>
+      </Container>
+    </React.Fragment>
   )
 }
 

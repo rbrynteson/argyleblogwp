@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { makeStyles } from "@mui/styles";
+import { styled } from "@mui/material/styles";
 import Layout from "../components/layout";
 import {
     Hidden,
@@ -11,29 +11,39 @@ import {
     Grid,
 } from "@mui/material";
 
-const useStyles = makeStyles({
-    card: {
-        display: "flex",
-    },
-    cardDetails: {
-        flex: 1,
-    },
-    divPadding: {
-        marginBottom: 10,
-    },
-    noLink: {
-        textDecoration: "none",
-        color: "inherit",
-    },
-    maxImageSize: {
-        maxHeight: 115,
-        maxWidth: 225,
-    },
-});
+const StyledCard = styled(Card)(
+    ({ theme }) => `
+        display: flex;
+    `
+);
+
+const StyledCardDetails = styled('div')(
+    ({ theme }) => `
+        flex: 1;
+    `
+);
+
+const StyledCardPadding = styled('div')(
+    ({ theme }) => `
+        margin-bottom: 10px;
+    `
+);
+
+const StyledNoLink = styled('a')(
+    ({ theme }) => `
+        text-decoration: none;
+        color: inherit;
+    `
+);
+
+const StyledImage= styled('img')(
+    ({ theme }) => `
+        max-height: 115px;
+        max-width: 225px;
+    `
+);
 
 export default function Index({ data }) {
-    const classes = useStyles();
-
     return (
         <Layout>
             <Grid item xs={12} md={8}>
@@ -41,10 +51,10 @@ export default function Index({ data }) {
                     Recent Stories
                 </Typography>
                 {data.TopPosts.edges.map(({ node }) => (
-                    <div className={classes.divPadding} key={node.id}>
-                        <a className={classes.noLink} href={node.uri}>
-                            <Card className={classes.card}>
-                                <div className={classes.cardDetails}>
+                    <StyledCardPadding key={node.id}>
+                        <StyledNoLink href={node.uri}>
+                            <StyledCard>
+                                <StyledCardDetails>
                                     <CardContent>
                                         <Typography variant="h5">
                                             {node.title}
@@ -59,24 +69,23 @@ export default function Index({ data }) {
                                             {node.excerpt}
                                         </Typography>
                                     </CardContent>
-                                </div>
+                                </StyledCardDetails>
                                 <Hidden xsDown>
                                     {node.featuredImage != null ? (
                                         <CardMedia>
-                                            <img
+                                            <StyledImage
                                                 src={
                                                     node.featuredImage.node
                                                         .mediaItemUrl
                                                 }
-                                                className={classes.maxImageSize}
                                                 alt=""
                                             />
                                         </CardMedia>
                                     ) : null}
                                 </Hidden>
-                            </Card>
-                        </a>
-                    </div>
+                            </StyledCard>
+                        </StyledNoLink>
+                    </StyledCardPadding>
                 ))}
             </Grid>
         </Layout>

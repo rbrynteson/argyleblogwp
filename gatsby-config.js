@@ -61,14 +61,7 @@ module.exports = {
          * Resolve issues with page loading.  See https://github.com/gatsbyjs/gatsby/issues/9121
          * for details
          */
-        { 
-          resolve: `gatsby-plugin-material-ui`, // If you want to use styled components you should change the injection order. 
-          options: { 
-            stylesProvider: { 
-              injectFirst: true, 
-            },
-          },
-        },
+        `gatsby-plugin-material-ui`,
         `gatsby-plugin-styled-components`,
 
         /**

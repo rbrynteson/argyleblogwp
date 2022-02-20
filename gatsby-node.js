@@ -15,8 +15,6 @@ const _ = require("lodash");
 exports.createPages = async gatsbyUtilities => {
     // If there are posts, create pages for them
     const categories = await getCategories(gatsbyUtilities);
-    console.log("HERE");
-    console.log(categories);
     await createTagsPages({ categories, gatsbyUtilities });
 
     // Query our posts from the GraphQL server
@@ -57,10 +55,6 @@ const createTagsPages = async ({ categories, gatsbyUtilities }) =>
                     tag: category.fieldValue,
                 },
             });
-
-            //console.log(category);
-            //console.log("LOOP");
-            //console.log(category.fieldValue);
         })
     );
 

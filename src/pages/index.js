@@ -8,8 +8,7 @@ import {
   CardMedia,
   CardContent,
   Typography,
-  Grid,
-  Link
+  Grid
 } from "@mui/material"
 
 const useStyles = makeStyles({
@@ -43,7 +42,7 @@ export default function Index({ data }) {
         </Typography>
         {data.TopPosts.edges.map(({ node }) => (
           <div className={classes.divPadding} key={node.id}>
-            <Link className={classes.noLink} href={node.uri}>
+            <a className={classes.noLink} href={node.uri}>
               <Card className={classes.card}>
                 <div className={classes.cardDetails}>
                   <CardContent>
@@ -62,12 +61,13 @@ export default function Index({ data }) {
                       <img
                         src={node.featuredImage.node.mediaItemUrl}
                         className={classes.maxImageSize}
+                        alt=''
                       />
                     </CardMedia>
                   ) : null}
                 </Hidden>
               </Card>
-            </Link>
+            </a>
           </div>
         ))}
       </Grid>

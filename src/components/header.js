@@ -1,70 +1,74 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { makeStyles } from '@mui/styles';
-import { Link, Toolbar, IconButton, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Link, Toolbar, IconButton, Typography } from "@mui/material";
 
-const useStyles = makeStyles({
-    toolbar: {
-        borderBottom: '1px solid black',
-    },
-    toolbarTitle: {
-        flex: 1,
-    },
-    toolbarLink: {
-        padding: 1,
-        flexShrink: 0,
-    },
-    toolbarSecondary: {
-        justifyContent: "space-between",
-        overflowX: "auto",
-    },
-});
+const StyledToolbar = styled(Toolbar)(
+    ({ theme }) => `
+    border-bottom: 1px solid black;
+  `
+);
+
+const StyledSecondToolbar = styled(Toolbar)(
+    ({ theme }) => `
+    justify-content: space-between;
+    overflow-x: auto;
+  `
+);
+
+const StyledTypography = styled(Typography)(
+    ({ theme }) => `
+    flex: 1;
+  `
+);
+
+const StyledLink = styled(Link)(
+    ({ theme }) => `
+    padding: 1;
+    flex-shrink: 0;
+  `
+);
 
 export default function Header(props) {
-    const classes = useStyles();
     const { sections, title } = props;
 
     return (
         <React.Fragment>
-            <Toolbar className={classes.toolbar}>
+            <StyledToolbar>
                 {/* <Button size="small">Subscribe</Button> */}
-                <Typography
+                <StyledTypography
                     variant="h5"
                     color="inherit"
                     align="center"
                     noWrap
-                    className={classes.toolbarTitle}
                 >
-                    <Link
+                    <StyledLink
                         color="inherit"
                         noWrap
                         href="/"
-                        className={classes.toolbarLink}
                     >
                         {title}
-                    </Link>
-                </Typography>
+                    </StyledLink>
+                </StyledTypography>
                 <IconButton></IconButton>
-            </Toolbar>
-            <Toolbar
+            </StyledToolbar>
+            <StyledSecondToolbar
                 component="nav"
                 variant="dense"
-                className={classes.toolbarSecondary}
             >
                 {sections.map(section => (
-                    <Link
+                    <StyledLink
                         color="inherit"
                         noWrap
                         key={section.title}
                         variant="body2"
                         href={section.url}
-                        className={classes.toolbarLink}
                     >
                         {section.title}
-                    </Link>
+                    </StyledLink>
                 ))}
-            </Toolbar>
+            </StyledSecondToolbar>
         </React.Fragment>
     );
 }

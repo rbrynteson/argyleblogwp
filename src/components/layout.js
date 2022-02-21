@@ -34,9 +34,9 @@ const Layout = ({ isHomePage, children }) => {
         { title: "Microsoft Teams", url: "/tags/microsoft-teams/" },
         { title: "Skype for Business", url: "/tags/skype-for-business/" },
         { title: "Validator", url: "/tags/validator/" },
-        { title: "Bookmarks", url: "/bookmarks" },
+        { title: "Bookmarks", url: "/2020/01/01/bookmarks/" },
         { title: "Projects", url: "#" },
-        { title: "About", url: "/about" },
+        { title: "About", url: "/2020/01/01/about-the-argyle-mvp/" },
     ];
 
     return (

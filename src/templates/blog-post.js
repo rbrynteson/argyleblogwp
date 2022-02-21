@@ -18,7 +18,11 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
     return (
         <Layout>
-            <Seo title={post.title} description={post.excerpt} />
+            <Seo
+                title={post.title}
+                description={post.excerpt.replace(/<[^>]+>/g, "")}
+                author={post.author.node.name}
+            />
             <Grid item xs={12} md={8}>
                 <div className="post">
                     <article
@@ -113,6 +117,11 @@ export const pageQuery = graphql`
                             )
                         }
                     }
+                }
+            }
+            author {
+                node {
+                    name
                 }
             }
         }

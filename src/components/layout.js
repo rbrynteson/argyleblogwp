@@ -5,6 +5,7 @@ import { CssBaseline, Container, Grid } from "@mui/material";
 
 import Header from "../components/header.js";
 import Sidebar from "../components/sidebar";
+import Footer from "../components/footer.js";
 
 const Layout = ({ isHomePage, children }) => {
     const {
@@ -47,6 +48,7 @@ const Layout = ({ isHomePage, children }) => {
                     {children}
                     <Sidebar />
                 </StyledGrid>
+                <Footer description="Built using Gatsby and Material-UI" />
             </Container>
         </React.Fragment>
     );

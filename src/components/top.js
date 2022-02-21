@@ -26,6 +26,11 @@ const Top = () => {
                                 mediaItemUrl
                             }
                         }
+                        author {
+                            node {
+                                name
+                            }
+                        }
                     }
                 }
             }
@@ -66,7 +71,7 @@ const Top = () => {
 
     return (
         <div>
-            { topPosts.allWpPost.edges.map(({ node }) => (
+            {topPosts.allWpPost.edges.map(({ node }) => (
                 <StyledCardPadding key={node.id}>
                     <StyledNoLink href={node.uri}>
                         <StyledCard>
@@ -82,7 +87,7 @@ const Top = () => {
                                         By Richard Brynteson {node.date}
                                     </Typography>
                                     <Typography variant="caption" paragraph>
-                                        {node.excerpt.replace(/<[^>]+>/g, '')}
+                                        {node.excerpt.replace(/<[^>]+>/g, "")}
                                     </Typography>
                                 </CardContent>
                             </StyledCardDetails>
@@ -102,7 +107,7 @@ const Top = () => {
                         </StyledCard>
                     </StyledNoLink>
                 </StyledCardPadding>
-            )) }
+            ))}
         </div>
     );
 };

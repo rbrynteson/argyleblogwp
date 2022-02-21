@@ -11,7 +11,6 @@ import {
 export default function Index() {
     return (
         <Layout>
-            <Featured />
             <Grid item xs={12} md={8}>
                 <Typography variant="h4" color="inherit" gutterBottom={true}>
                     Recent Stories

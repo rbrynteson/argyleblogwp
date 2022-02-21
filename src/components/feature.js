@@ -64,14 +64,8 @@ const Featured = () => {
         `
     );
 
-    let image = null;
     let bgImage = null;
     if (featuredPost.featuredImage != null) {
-        image = <img
-            style={{ display: "none" }}
-            src={featuredPost.featuredImage.node.mediaItemUrl}
-            alt={featuredPost.title}
-        />
         bgImage = featuredPost.featuredImage.node.mediaItemUrl;
     }
 
@@ -82,9 +76,11 @@ const Featured = () => {
             }}
         >
             {/* Increase the priority of the hero background image */}
-            {
-                <image />
-            }
+            { (featuredPost.featuredImage != null) ? <img
+                style={{ display: "none" }}
+                src={featuredPost.featuredImage.node.mediaItemUrl}
+                alt={featuredPost.title}
+            /> : null }
             <StyledOverlay />
             <Grid container>
                 <Grid item md={6}>

@@ -30,7 +30,7 @@ const Featured = () => {
         }
     `);
     const featuredPost = featuredPosts.allWpPost.edges[0].node;
-    const excerpt = featuredPost.excerpt;
+    const excerpt = featuredPost.excerpt.replace(/<[^>]+>/g, '');
     
     const StyledPaper = styled(Paper)(
         ({ theme }) => `
@@ -64,19 +64,26 @@ const Featured = () => {
         `
     );
 
+    let image = null;
+    let bgImage = null;
+    if (featuredPost.featuredImage != null) {
+        image = <img
+            style={{ display: "none" }}
+            src={featuredPost.featuredImage.node.mediaItemUrl}
+            alt={featuredPost.title}
+        />
+        bgImage = featuredPost.featuredImage.node.mediaItemUrl;
+    }
+
     return (
         <StyledPaper
             style={{
-                backgroundImage: `url(${featuredPost.featuredImage.node.mediaItemUrl})`,
+                backgroundImage: `url(${bgImage})`,
             }}
         >
             {/* Increase the priority of the hero background image */}
             {
-                <img
-                    style={{ display: "none" }}
-                    src={featuredPost.featuredImage.node.mediaItemUrl}
-                    alt={featuredPost.title}
-                />
+                <image />
             }
             <StyledOverlay />
             <Grid container>

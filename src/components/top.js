@@ -82,7 +82,7 @@ const Top = () => {
                                         By Richard Brynteson {node.date}
                                     </Typography>
                                     <Typography variant="caption" paragraph>
-                                        {node.excerpt}
+                                        {node.excerpt.replace(/<[^>]+>/g, '')}
                                     </Typography>
                                 </CardContent>
                             </StyledCardDetails>

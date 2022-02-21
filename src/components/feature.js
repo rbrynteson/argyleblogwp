@@ -4,6 +4,15 @@ import { styled } from "@mui/material/styles";
 import { Typography, Grid, Link, Paper } from "@mui/material";
 
 const Featured = () => {
+    function stripHtml(html){
+        // Create a new div element
+        var temporalDivElement = document.createElement("div");
+        // Set the HTML content with the providen
+        temporalDivElement.innerHTML = html;
+        // Retrieve the text property of the element (cross-browser support)
+        return temporalDivElement.textContent || temporalDivElement.innerText || "";
+    }
+
     const featuredPosts = useStaticQuery(graphql`
         query {
             allWpPost(
@@ -29,15 +38,14 @@ const Featured = () => {
             }
         }
     `);
-    console.log(featuredPosts.allWpPost.edges[0].node);
     const featuredPost = featuredPosts.allWpPost.edges[0].node;
+    const excerpt = stripHtml(featuredPost.excerpt);
     
-
     const StyledPaper = styled(Paper)(
         ({ theme }) => `
             position: relative;
             backgroundColor: #eeeeee;
-            color: #000000;
+            color: #ffffff;
             marginBottom: 4;
             background-size: cover;
             background-repeat: no-repeat;
@@ -59,9 +67,9 @@ const Featured = () => {
     const StyledFeature = styled("div")(
         ({ theme }) => `
             position: relative;
-            padding: 3,
-            padding: 6,
-            padding-right: 0,
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
         `
     );
 
@@ -92,7 +100,7 @@ const Featured = () => {
                             {featuredPost.title}
                         </Typography>
                         <Typography variant="h5" color="inherit" paragraph>
-                            {featuredPost.excerpt}
+                            {excerpt}...
                         </Typography>
                         <Link
                             variant="subtitle1"

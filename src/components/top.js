@@ -10,6 +10,15 @@ import {
 } from "@mui/material";
 
 const Top = () => {
+    function stripHtml(html){
+        // Create a new div element
+        var temporalDivElement = document.createElement("div");
+        // Set the HTML content with the providen
+        temporalDivElement.innerHTML = html;
+        // Retrieve the text property of the element (cross-browser support)
+        return temporalDivElement.textContent || temporalDivElement.innerText || "";
+    }
+
     const topPosts = useStaticQuery(graphql`
         query {
             allWpPost(sort: { order: DESC, fields: date }, limit: 5) {
@@ -66,7 +75,7 @@ const Top = () => {
 
     return (
         <div>
-            {topPosts.allWpPost.edges.map(({ node }) => (
+            { topPosts.allWpPost.edges.map(({ node }) => (
                 <StyledCardPadding key={node.id}>
                     <StyledNoLink href={node.uri}>
                         <StyledCard>
@@ -82,7 +91,7 @@ const Top = () => {
                                         By Richard Brynteson {node.date}
                                     </Typography>
                                     <Typography variant="caption" paragraph>
-                                        {node.excerpt}
+                                        {stripHtml(node.excerpt)}
                                     </Typography>
                                 </CardContent>
                             </StyledCardDetails>
@@ -102,7 +111,7 @@ const Top = () => {
                         </StyledCard>
                     </StyledNoLink>
                 </StyledCardPadding>
-            ))}
+            )) }
         </div>
     );
 };

@@ -35,7 +35,7 @@ const Layout = ({ isHomePage, children }) => {
         { title: "Skype for Business", url: "/tags/skype-for-business/" },
         { title: "Validator", url: "/tags/validator/" },
         { title: "Bookmarks", url: "/2020/01/01/bookmarks/" },
-        { title: "Projects", url: "#" },
+        { title: "Users Group", url: "/tags/users-group/" },
         { title: "About", url: "/2020/01/01/about-the-argyle-mvp/" },
     ];
 

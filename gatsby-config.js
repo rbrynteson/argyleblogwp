@@ -37,7 +37,6 @@ module.exports = {
                     allow401Images: true,
                 },
                 schema: {
-                    perpage: 20,
                     timeout: 60000, // Change this value to 60000
                 },
                 // the only required plugin option for WordPress is the GraphQL url.

@@ -27,24 +27,19 @@ const Bio = () => {
 
   return (
     <div className="bio">
-      {avatarUrl && (
-        <img
-          alt={author?.firstName || ``}
+      <img
+          alt='Richard Brynteson'
           className="bio-avatar"
-          src={avatarUrl}
+          src='https://media.licdn.com/dms/image/C4E03AQG2KfNf6GQBiA/profile-displayphoto-shrink_200_200/0/1565024081135?e=1698883200&v=beta&t=J7qrMgUMr_l0TQ7FLpcYPnKtHm90keQlsBUTLZRG2TI'
         />
-      )}
-      {author?.firstName && (
         <p>
-          Written by <strong>{author.firstName}</strong>
-          {` `}
-          {author?.description || null}
+          <strong>Written by Richard Brynteson</strong>&nbsp;
+          Office Apps & Services MVP
           <br />
           <a href={`https://twitter.com/rbrynteson`}>
               Follow on Twitter
           </a>
         </p>
-      )}
     </div>
   )
 }

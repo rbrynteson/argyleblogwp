@@ -4,6 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { Grid, Link } from "@mui/material";
 import parse from "html-react-parser";
 
+import Comments from "../components/comments";
 import Bio from "../components/bio";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -52,6 +53,8 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                         )}
 
                         <hr />
+
+                        <Comments></Comments>
 
                         <footer>
                             <Bio />

@@ -7,6 +7,12 @@
  */
 
 module.exports = {
+    siteMetadata: {
+        title: `Gatsby`,
+        siteUrl: `https://www.gatsbyjs.com`,
+        description: `Blazing fast modern site generator for React`,
+        repo: 'rbrynteson/argyleblogwp'
+    },
     /**
      * Adding plugins to this array adds them to your Gatsby site.
      *

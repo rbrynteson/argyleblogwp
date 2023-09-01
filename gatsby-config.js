@@ -57,6 +57,15 @@ module.exports = {
             options: {
                 name: `assets`,
                 path: `${__dirname}/content/assets`,
+                ignore: [`**/ignore-*`], // Add any ignore patterns if needed
+                // Customize the plugin behavior on image download errors
+                errorHandler: error => {
+                    // Log the error if you want
+                    console.error('Image download error:', error);
+                    // Optionally, you can return a value to continue processing other images
+                    // Here, we return null to indicate that the error should be ignored
+                    return null;
+                },
             },
         },
 

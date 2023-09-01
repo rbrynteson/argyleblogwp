@@ -23,4 +23,4 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/public
-    artifactName: ArgyleBlow
+    artifactName: ArgyleBlog

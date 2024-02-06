@@ -1,3 +1,9 @@
+Run Command:
+npm run build
+swa deploy .\public\ --env production
+
+or maybe we can just do the swa deploy
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
